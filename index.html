@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>My Links</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔗</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef2f7;
+    --surface: #ffffff;
+    --ink: #16203a;
+    --muted: #5d6b86;
+    --line: #d5dce8;
+    --accent: #2f4fe0;
+    --accent-ink: #ffffff;
+    --err: #c2331f;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121826; --surface: #1b2336; --ink: #e8edf8; --muted: #93a0bc;
+      --line: #2c3752; --accent: #7d95ff; --accent-ink: #0f1630; --err: #ff8a78;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.5;
+  }
+  button, input { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  [hidden] { display: none !important; }
+
+  /* ---------- Layar kunci ---------- */
+  #gate {
+    min-height: 100vh; display: grid; place-items: center; padding: 24px;
+  }
+  .gate-box { width: 100%; max-width: 360px; }
+  .gate-box h1 {
+    font-size: clamp(2.4rem, 9vw, 3.4rem); font-weight: 800; line-height: 1.02;
+    letter-spacing: -0.035em; margin: 0 0 12px;
+  }
+  .gate-box p { margin: 0 0 24px; color: var(--muted); }
+  .field { display: flex; gap: 8px; }
+  .field input {
+    flex: 1; min-width: 0; padding: 12px 14px; border-radius: 10px;
+    border: 1.5px solid var(--line); background: var(--surface);
+  }
+  .field input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .btn {
+    padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer;
+    background: var(--accent); color: var(--accent-ink); font-weight: 600;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  #gate-msg { min-height: 1.5em; margin: 10px 0 0; color: var(--err); font-size: .92rem; }
+  .shake { animation: shake .35s; }
+  @keyframes shake {
+    20% { transform: translateX(-8px); } 40% { transform: translateX(7px); }
+    60% { transform: translateX(-5px); } 80% { transform: translateX(3px); }
+  }
+
+  /* ---------- Halaman utama ---------- */
+  #app { max-width: 980px; margin: 0 auto; padding: 40px 20px 72px; }
+  header.top {
+    display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
+    gap: 16px; margin-bottom: 36px;
+  }
+  header.top h1 {
+    margin: 0; font-size: clamp(2rem, 6vw, 3rem); font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.05;
+  }
+  header.top small { display: block; color: var(--muted); font-size: .95rem; margin-top: 6px; }
+  .tools { display: flex; gap: 8px; align-items: center; flex: 1 1 260px; max-width: 420px; }
+  .tools input {
+    flex: 1; min-width: 0; padding: 10px 14px; border-radius: 10px;
+    border: 1.5px solid var(--line); background: var(--surface);
+  }
+  .tools input:focus { border-color: var(--accent); outline: none; }
+  .ghost {
+    padding: 10px 14px; border-radius: 10px; cursor: pointer;
+    background: transparent; border: 1.5px solid var(--line); color: var(--muted);
+  }
+  .ghost:hover { color: var(--ink); border-color: var(--muted); }
+
+  section.group { margin-bottom: 34px; }
+  section.group h2 {
+    font-size: 1.05rem; font-weight: 600; margin: 0 0 12px; color: var(--muted);
+  }
+  .grid {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+  a.link {
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+    background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px;
+    color: inherit; text-decoration: none; min-width: 0;
+    transition: border-color .15s, transform .15s;
+  }
+  a.link:hover { border-color: var(--accent); transform: translateY(-2px); }
+  a.link img { width: 28px; height: 28px; border-radius: 6px; flex: none; }
+  a.link span { display: block; min-width: 0; }
+  a.link b { display: block; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  a.link i {
+    display: block; font-style: normal; font-size: .8rem; color: var(--muted);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  #empty { color: var(--muted); padding: 24px 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== LAYAR PASSWORD ========== -->
+<main id="gate">
+  <form class="gate-box" id="gate-form" autocomplete="off">
+    <h1>Who are you?</h1>
+    <p>If you know me, please enter my date of birth.</p>
+    <div class="field">
+      <input type="password" id="pw" placeholder="Date of Birth" aria-label="Date of Birth" autofocus>
+      <button class="btn" type="submit">Unlock</button>
+    </div>
+    <p id="gate-msg" role="alert"></p>
+  </form>
+</main>
+
+<!-- ========== HALAMAN UTAMA ========== -->
+<div id="app" hidden>
+  <header class="top">
+    <div>
+      <h1 id="greeting">Hello</h1>
+      <small id="count"></small>
+    </div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search Link ( Press / )" aria-label="Search links">
+      <button class="ghost" id="lock" type="button">Lock</button>
+    </div>
+  </header>
+  <div id="groups"></div>
+  <p id="empty" hidden>No matching links found. Try different keywords.</p>
+</div>
+
+<script>
+/* =====================================================
+   PENGATURAN — ubah bagian ini saja
+   ===================================================== */
+const PASSWORD = "woNgateli";   // <- ganti dengan password kamu
+const NAMA = "Mr. M";                          // opsional, mis. "Hendri" -> "Selamat pagi, Hendri"
+
+// Tambah / hapus tautan di sini. Format: ["Nama", "https://alamat-situs"]
+const LINKS = [
+  { group: "Google", items: [
+    ["Gmail",        "https://mail.google.com"],
+    ["Google Drive", "https://drive.google.com"],
+    ["Google Calendar", "https://calendar.google.com"],
+    ["YouTube",      "https://www.youtube.com"],
+  ]},
+  { group: "Nglembur", items: [
+    ["Epub",          "https://annaman720p.github.io/readEpu/"],
+    ["Azur Lane L2D", "https://azurlane.nagami.moe/live2d-viewer"],
+    ["Koumakan", "https://azurlane.koumakan.jp/wiki/Azur_Lane_Wiki"],
+    ["Slaimuda", "https://slaimuda.github.io/ectl/#/home"],
+    ["X Downloader", "https://ssstwitter.com"],
+    ["WT Decal", "https://wtpb.net/?category=all&availability=available&method=all"],
+    ["WT Wiki", "https://wiki.warthunder.com/"],
+    ["WT Live", "https://live.warthunder.com/feed/all/"],
+    ["Upsacle", "https://unlimited.waifu2x.net/"],
+    ["RPGMVP", "https://petschko.org/tools/mv_decrypter/index.html#restore-images"],
+    ["F Nopelpia", "https://fucknovelpia.com/"],
+    
+  ]},
+  // { group: "Koding", items: [
+  //   ["GitHub",       "https://github.com"],
+  //   ["Claude",       "https://claude.ai"],
+  //   ["MDN Web Docs", "https://developer.mozilla.org"],
+  //   ["Stack Overflow", "https://stackoverflow.com"],
+  // ]},
+];
+/* ===================================================== */
+
+const KEY = "tautan-unlocked";
+const $ = (id) => document.getElementById(id);
+
+function store(fn) { try { return fn(); } catch (e) { return null; } }
+const isUnlocked = () => store(() => sessionStorage.getItem(KEY)) === "1";
+
+function greeting() {
+  const h = new Date().getHours();
+  const s = h < 11 ? "Good Morning" : h < 15 ? "Good Evening" : h < 18 ? "Good afternoon" : "Good Night";
+  return NAMA ? s + ", " + NAMA : s;
+}
+
+function domainOf(url) {
+  try { return new URL(url).hostname.replace(/^www\./, ""); } catch (e) { return url; }
+}
+
+function render(filter) {
+  const term = (filter || "").trim().toLowerCase();
+  const root = $("groups");
+  root.textContent = "";
+  let shown = 0, total = 0;
+
+  LINKS.forEach((g) => {
+    total += g.items.length;
+    const items = g.items.filter(([name, url]) =>
+      !term || name.toLowerCase().includes(term) || domainOf(url).includes(term));
+    if (!items.length) return;
+    shown += items.length;
+
+    const sec = document.createElement("section");
+    sec.className = "group";
+    const h2 = document.createElement("h2");
+    h2.textContent = g.group;
+    const grid = document.createElement("div");
+    grid.className = "grid";
+
+    items.forEach(([name, url]) => {
+      const a = document.createElement("a");
+      a.className = "link";
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+
+      const img = document.createElement("img");
+      img.alt = "";
+      img.loading = "lazy";
+      img.src = "https://www.google.com/s2/favicons?sz=64&domain=" + encodeURIComponent(domainOf(url));
+
+      const txt = document.createElement("span");
+      const b = document.createElement("b");
+      b.textContent = name;
+      const i = document.createElement("i");
+      i.textContent = domainOf(url);
+      txt.append(b, i);
+
+      a.append(img, txt);
+      grid.appendChild(a);
+    });
+
+    sec.append(h2, grid);
+    root.appendChild(sec);
+  });
+
+  $("empty").hidden = shown > 0;
+  $("count").textContent = total + " Links, " + shown + " shown";
+}
+
+function showApp() {
+  $("gate").hidden = true;
+  $("app").hidden = false;
+  $("greeting").textContent = greeting();
+  render("");
+}
+
+function showGate() {
+  $("app").hidden = true;
+  $("gate").hidden = false;
+  $("pw").value = "";
+  $("q").value = "";
+  $("pw").focus();
+}
+
+$("gate-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  if ($("pw").value === PASSWORD) {
+    store(() => sessionStorage.setItem(KEY, "1"));
+    $("gate-msg").textContent = "";
+    showApp();
+  } else {
+    const box = document.querySelector(".gate-box");
+    $("gate-msg").textContent = "Password salah, coba lagi.";
+    box.classList.remove("shake");
+    void box.offsetWidth;
+    box.classList.add("shake");
+    $("pw").select();
+  }
+});
+
+$("lock").addEventListener("click", () => {
+  store(() => sessionStorage.removeItem(KEY));
+  showGate();
+});
+
+$("q").addEventListener("input", (e) => render(e.target.value));
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "/" && !$("app").hidden && document.activeElement !== $("q")) {
+    e.preventDefault();
+    $("q").focus();
+  }
+  if (e.key === "Enter" && document.activeElement === $("q")) {
+    const first = document.querySelector("a.link");
+    if (first) first.click();
+  }
+});
+
+if (isUnlocked()) showApp();
+</script>
+</body>
+</html>
